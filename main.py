@@ -2,7 +2,7 @@
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 
-from .routers.yahoofinance import yf_router
+from routers.yahoofinance import yf_router
 
 app = FastAPI()
 
@@ -11,4 +11,4 @@ def root():
     return RedirectResponse('/docs')
 
 
-app.add_route(yf_router)
+app.include_router(yf_router)
