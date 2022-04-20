@@ -66,3 +66,15 @@ async def get_technical_indicators(currency_cross:str,timeframe:str="5mins"):
             )
         ) 
     return technical_indicators
+
+@invest_route.get('/economic_calendar')
+async def get_economic_calendar():
+    df = investpy.economic_calendar()
+    economic_calendar = []
+    for i in range(len(df)):
+        economic_calendar.append(
+            json.loads(
+                df.iloc[i].to_json()
+            )
+        )
+    return economic_calendar
