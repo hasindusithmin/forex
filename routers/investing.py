@@ -7,7 +7,7 @@ currency_cross_list = ['EUR/USD', 'USD/JPY', 'GBP/USD', 'AUD/USD', 'NZD/USD', 'E
 timeframe_list = ['5mins', '15mins', '30mins','lhour']
 invest_route = APIRouter(
     prefix='/invest',
-    tags=['investing']
+    tags=['investing.com']
 )
 
 @invest_route.get('/moving_averages/{currency_cross}')
