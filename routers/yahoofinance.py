@@ -23,7 +23,7 @@ async def get_info(currency_cross:str):
         }
 
 @yf_router.get('/history/{currency_cross}')
-async def get_candlestick(currency_cross:str,interval:str):
+async def get_candlestick(currency_cross:str,interval:str="5m"):
     try:
         currency_cross = f'{currency_cross.upper()}=X'
         can_done = True if currency_cross in currency_cross_list and interval in interval_list else False
