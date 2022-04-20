@@ -45,6 +45,18 @@ async def get_candlestick(currency_cross:str,interval:str):
         return candlestick
     except:
         return {
-            "error":"currency cross not found"
+            "error":"currency cross or timeframe not found"
         }
 
+@yf_router.get('/news/{currency_cross}')
+async def get_news(currency_cross:str):
+    try:
+        currency_cross = f'{currency_cross.upper()}=X'
+        can_done = True if currency_cross in currency_cross_list else False
+        if not can_done:
+            raise Exception("")
+        return yf.Ticker(currency_cross).news
+    except:
+        return {
+            "error":"currency cross not found"
+        }
